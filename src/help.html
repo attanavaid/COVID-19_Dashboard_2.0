@@ -1,0 +1,146 @@
+<!-- ./src/404.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel = "stylesheet" href = "https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+    <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src = "./LeafletData/us-counties.js"></script>
+    <title>Help</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="helpPage specialPage">
+      <div class="container" style="margin-top: 40px;">
+        <div class="row">
+          <div class="col">
+            <div>
+              <h1 style="font-size: 60px;">
+                <i>Help</i>
+                <hr>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="whiteBox mx-3 rounded shadow-sm">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="modeTitle" style="padding: 12px 0px 0px 25px;">
+                How Can We Help?
+              </h4>
+            </div>
+          </div>
+          <div style="margin: 25px;">
+            <div class="row">
+              <div class="col-md-6">
+                <div>
+                  <p style="margin-bottom: 4px;">
+                    First name
+                  </p>
+                  <input type="text" class="textInp" placeholder="First name" style="margin-bottom: 25px;">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <p style="margin-bottom: 4px;">
+                    Last name
+                  </p>
+                  <input type="text" class="textInp" placeholder="Last name" style="margin-bottom: 25px;">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div>
+                  <p style="margin-bottom: 4px;">
+                    Email address
+                  </p>
+                  <input type="text" class="textInp center-block" placeholder="Email address" style="margin-bottom: 25px;">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div>
+                  <p style="margin-bottom: 4px;">
+                    Message
+                  </p>
+                  <input type="text" class="textInp center-block" placeholder="Message" style="margin-bottom: 25px;">
+                </div>
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-secondary" style="margin-left: 0px;" onclick="" id="sendMessageButton">
+                Send Message
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row m-3">
+          <div class="whiteBox col-md-8 rounded shadow-sm">
+            <h4 class="modeTitle" style="padding: 12px 0px 0px 12px;">
+              Our Address
+            </h4>
+            <p style="margin-top: 25px; padding: 0px 0px 0px 12px;">
+              Emergency Health Services UMBC
+              <br>
+              1000 Hilltop Circle
+              <br>
+              Baltimore, MD 21250 
+              <br>
+              USA
+              <br>
+              Phone: +1 410-455-3223
+              <br>
+              Fax: 410-455-1125
+              <br>
+              Email: <a href="mailto:uhs@umbc.edu">uhs@umbc.edu</a>
+              <br>
+              Times: Mon – Fri: 8:30 AM – 5 PM EDT
+              <br>
+            </p>
+          </div>
+          <div class="whiteBox col-md-4 rounded shadow-sm">
+            <img class="uhs card-img-top" src="/assets/img/icons/uhs.jpg" alt="AddressImage" width="50%" height="50%">
+            <img class="uhs card-img-top" src="/assets/img/icons/uhs2.png" alt="AddressImage2" width="50%" height="50%">
+          </div>
+        </div>
+        <div class="row m-3">
+          <div class="whiteBox col-md-12 rounded shadow-sm">
+            <h4 class="modeTitle" style="padding: 12px 0px 0px 12px;">
+              Our Emails
+            </h4>
+            <p style="margin-top: 25px; padding: 0px 0px 0px 12px;">
+              Jake Doody: <a href="mailto:jdoody1@umbc.edu">jdoody1@umbc.edu</a>
+              <br>
+              Zamya Golpayegan: <a href="mailto:rgolpay1@umbc.edu">rgolpay1@umbc.edu</a>
+              <br>
+              Ryan Hagedorn: <a href="mailto:ryanh4@umbc.edu">ryanh4@umbc.edu</a>
+              <br>
+              Suraj Khatiwada: <a href="mailto:surajk1@umbc.edu">surajk1@umbc.edu</a>
+              <br>
+              Atta Navaid: <a href="mailto:a302@umbc.edu">a302@umbc.edu</a>
+              <br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+    <script type="module" src="/assets/js/footer.js"></script>
+    <script type="module" src="/assets/js/navbar.js"></script>
+  </body>
+</html>

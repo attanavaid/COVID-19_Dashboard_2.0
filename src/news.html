@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel = "stylesheet" href = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel = "stylesheet" href = "https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+    <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src = "./LeafletData/us-counties.js"></script>
+    <title>News</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="newsPage specialPage">
+      <div class="container" style="margin-top: 40px;">
+        <div class="row">
+          <div class="col">
+            <div>
+              <h1 style="font-size: 60px;">
+                <i>News</i>
+                <hr>
+              </h1>
+            </div>
+            <div>
+              <p>
+                This application allows you to view COVID-19 data of select counties in the United States.
+                You will be allowed to view the data of any county, but are not allowed to manipulate any data.
+                <br><br>
+                If you wish to view COVID-19 data of a county, start by filling out the relevant information above the map.
+                Then check the map, you should be able to view data pertaining to your chosen county.
+                <br>
+                More infomation can be found on the <a href="/about">About Us</a> page.
+                <br><br>
+              </p>
+            </div>
+            <div class="features">
+              <h2 class="tnrTitle" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                New features
+              </h2>
+              <p style="color: dimgray;">
+                November 22, 2021 <br>
+                12:08 PM EDT <br>
+                Written by
+                <a class="popup" onclick="showPopUp('infoPopup')" style="color: #007bff;">
+                  Atta
+                  <span class="popuptext" id="infoPopup">
+                    <i>Front-End Developer</i>
+                    <br>
+                    <b>Email:</b> a302@umbc.edu
+                  </span>
+                </a>
+              </p>
+              <p>
+                Here are some new features that were recently added to this application:
+              </p>
+              <ul>
+                <li>
+                  New pages like "News", "About", and more!
+                  Click on their respective titles at the top in the navigation bar to start exploring them!
+                </li>
+                <li>
+                  Redesigned Footer (looks much cleaner and simplistic)!
+                </li>
+                <li>
+                  Now you can now activate dark mode for this website!
+                  This was a highly requested feature, so we, the development team, have decided to add it.
+                  Click "Settings" in the navigation bar to experience dark mode right now!
+                </li>
+                <li>
+                  New help page with easy accessibility and contact options!
+                  Click on "Help" in the navigation bar to get help from the development team as soon as possible!
+                </li>
+              </ul>
+              <p>
+                All of these <em>amazing features</em> will continually become more efficient in the future!
+              </p>
+              <p>
+                As of now, surf the site, and have a great day exploring them! <br><br><br>
+              </p>
+            </div>
+            <div class="maintenance">
+              <h2 class="tnrTitle" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                Maintenance
+              </h2>
+              <p style="color: dimgray;">
+                November 21, 2021 <br>
+                1:23 PM EDT <br>
+                Written by
+                <a class="popup" onclick="showPopUp('infoPopup2')" style="color: #007bff;">
+                  Jake
+                  <span class="popuptext" id="infoPopup2">
+                    <i>Back-End Developer</i>
+                    <br>
+                    <b>Email:</b> jdoody1@umbc.edu
+                  </span>
+                </a>
+              </p>
+              <p>
+                Our services will be<mark>down for maintenance on December 8 from 4:00 PM EDT to 7:00 PM EDT.</mark>Thank
+                you for your patience!
+                <br>
+                Here are some things to note when this site is under maintenance.
+              </p>
+              <ul>
+                <li>
+                  If you have any questions about the maintenance, please send us an e-mail.
+                </li>
+                <li>
+                  If you are on the site and the site is about to go under maintenance.
+                  You will lose your current session, and changes you make will not be recorded.
+                </li>
+                <li>
+                  If you are in an urgent situation and need to obtain information from this site during maintenance
+                  , then please issue a request to us via e-mail. And your request may be granted depending on the type of
+                  your request.
+                </li>
+              </ul>
+              <p>
+                We hope you abide by these notes and be patient during our maintenance.
+              </p>
+              <p>
+                It should also be noted that maintenance doesn't usually last for three hours, it just gives us time to
+                truly solve the issues.
+                <br><br>
+                <em>Thank you</em> for using our application!
+              </p>
+            </div>
+          </div>
+          <aside class="col-md-4 blog-sidebar">
+            <div class="p-4 mb-3 bg-dark rounded" style="color: lightgray;">
+              <h4 class="font-italic">
+                Important Notice
+              </h4>
+              <h6 class="mb-0 font-italic">
+                All data provided by this website is updated weekly every Sunday by 10:00 PM EDT.
+                <br>
+                Data displayed on this site has been manually approved by the administrators of this website.
+              </h6>
+            </div>
+            <div class="p-4">
+              <h4 class="tnrTitle font-italic">
+                Socials and Updates
+              </h4>
+              <ol class="list-unstyled">
+                <li><a href="#">GitHub</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+              </ol>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+    <script type="module" src="/assets/js/footer.js"></script>
+    <script type="module" src="/assets/js/navbar.js"></script>
+  </body>
+</html>

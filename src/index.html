@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <link rel = "stylesheet" href = "https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+    <script src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <title>COVID-19 County Data Software</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="homePage specialPage">
+      <div class="container-fluid" style="margin-top: 40px;">
+        <div class="whiteBox my-3 rounded shadow-sm">
+          <div style="margin: 20px;">
+            <div>
+              <div class="row">
+                <div class="col-xl">
+                  <form style="white-space: nowrap; width: 70%;">
+                    <b>State:&nbsp;</b>
+                    <select class="browser-default custom-select select-menu" id="stateSelectMenu"
+                      onchange="stateToCounties(this.value)">
+                      <option value="00">Select a State:</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="col-xl-3">
+                  <form style="white-space: nowrap; width: 50%;">
+                    <b>County or Metro Area:&nbsp;</b>
+                    <select class="browser-default custom-select select-menu" id="countySelectMenu"
+                      onchange="showCountyData(this.value)">
+                      <option value="00000">Select a County:</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="col-xl">
+                  <form style="white-space: nowrap; width: 60%;">
+                    <b>View:&nbsp;</b>
+                    <select class="browser-default custom-select select-menu2" id="typeOfMapMenu"
+                      onchange="changeMapType(this.value)">
+                      <option value="0">Infection Rates</option>
+                      <option value="1">Vaccination Rates</option>
+                      <option value="2">Cases</option>
+                      <option value="3">Deaths</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="col-xl-2">
+                  <form style="white-space: nowrap; width: 60%;">
+                    <b>Date of Data:&nbsp;</b>
+                    <input type="date" id="dateOfDataMenu" value="" min="" max=""
+                      onchange="changeDateOfData(countySelectMenu.value)" required>
+                  </form>
+                </div>
+                <div class="col-xl">
+                  <button class="btn" style="margin-left: 25%;" id="resetSelectionButton" onclick="resetFunction()">
+                    <b>Reset Selection</b>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-8 justify-content-center">
+              <div class="whiteBox my-3 rounded shadow-sm" style="padding: 10px;">
+                <div id="map"></div>
+                <!--
+                <div id="loader"></div>
+                <p id="loaderText">
+                  Loading Map
+                  <br>
+                  Please Wait
+                </p>
+                -->
+              </div>
+            </div>
+            <div class="col-xl-4">
+              <div class="whiteBox my-3 rounded shadow-sm" style="padding: 2% 1% 2% 1%;">
+                <b id="countyName">County Name</b>
+                <br>
+                <i id="stateName">State Name or Initials</i>
+                <br>
+                <i id="countyFIPSCode">County FIPS code</i>
+              </div>
+              <div class="whiteBox my-3 rounded shadow-sm" style="padding: 2% 1% 2% 1%;">
+                <i id="infectionRate">Infection Rate</i>
+                <canvas id="infectionRateChart" style="width:90%; width:90%"></canvas>
+                <br>
+                <i id="vaccinationRate">Vaccination Rate</i>
+                <canvas id="vaccinationRateChart" style="width:90%; width:90%"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-6">
+              <div class="whiteBox my-3 rounded shadow-sm">
+                <div style="padding: 20px;">
+                  <h3>
+                    <b>Cases</b><br>
+                  </h3>
+                  <p>
+                    According to our records, the cumulative number of positive COVID-19 cases in this county is <b
+                      id="casesNum">N/A</b> for the selected date.
+                    <br>
+                    Note that this statistic is up-to-date and verified by our administrators.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="whiteBox my-3 rounded shadow-sm">
+                <div style="padding: 20px;">
+                  <h3>
+                    <b>Deaths</b>
+                    <br>
+                  </h3>
+                  <p>
+                    According to our records, the number of confirmed deaths by COVID-19 for this county is <b
+                      id="deathsNum">N/A</b> for the selected date.
+                    <br>
+                    Note that this statistic is up-to-date and verified by our administrators.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/js/us-counties.js"></script>
+    <script type="module" src="/assets/js/app.js"></script>
+    <script type="module" src="/assets/js/footer.js"></script>
+    <script type="module" src="/assets/js/navbar.js"></script>
+  </body>
+</html>
