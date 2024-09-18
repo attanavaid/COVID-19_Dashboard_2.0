@@ -1,4 +1,5 @@
 // app.js
+import { countiesDataOrigin } from './us-counties'; 
 import covidData from '../data/covid_data.json'; 
 
 // Global variables
@@ -6,12 +7,13 @@ let selectedState = '';
 let selectedCounty = '';
 let selectedView = 'cases';
 let selectedDate = '2022-03-15'; // Last date in our dataset
+let countiesData = [];
 const defaultDataset = [0, 0, 0, 0, 0, 0, 0];
 const defaultLabel = ["N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A"];
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-    countiesData = filterGeoJSON(countiesData);
+    countiesData = filterGeoJSON(countiesDataOrigin);
     initMap();
     initUI();
 });
